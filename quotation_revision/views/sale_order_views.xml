@@ -23,11 +23,6 @@
 				<xpath expr="//button[@name='action_confirm']" position="after">
 					<button name="so_revision_quote" string="Make Revise Sale Quotation"
 						type="object" states="sent" class="btn-primary" />
-					<!-- <button name="action_quotation_send" string="Send by Email" type="object" 
-						states="draft_quote" class="btn-primary" /> <button name="print_quotation" 
-						string="Print" type="object" states="draft_quote" class="btn-primary" /> 
-						<button name="action_cancel" states="draft_quote" type="object" string="Cancel" 
-						/> -->
 				</xpath>
 
 				<xpath expr="//div[@name='button_box']" position="inside">
@@ -38,25 +33,9 @@
 							widget="statinfo" />
 					</button>
 				</xpath>
-				
-				<!-- <field name="payment_term_id" position="after">
-					<field name="is_revision_quote"/>
-				</field> -->
-				
 			</field>
 		</record>
 		
-		<!-- <record id="sale_order_view_search_inherit_quotation_revision" model="ir.ui.view">
-            <field name="name">sale.order.search.inherit.quotation.revision</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
-            <field name="arch" type="xml">
-                <xpath expr="//filter[@name='sales']" position="after">
-                    <filter string="Revised Quotations" name="revised_quotations" domain="[('state', '=', 'revised')]"/>
-                </xpath>
-            </field>
-        </record> -->
-        
         <record id="sale.action_quotations" model="ir.actions.act_window">
             <field name="domain">[('state', '!=', 'revised')]</field>
         </record>

@@ -17,7 +17,6 @@ class SaleOrder(models.Model):
     parent_saleorder_id = fields.Many2one('sale.order', 'Parent SaleOrder', copy=False)
     order_revised_count = fields.Integer('# of Orders Revised', compute='_order_revised_count', copy=False) 
     so_number = fields.Integer('SO Number', copy=False, default=1)
-#     is_revision_quote = fields.Boolean('Is Revision Quote', copy=False, default=False)
     state = fields.Selection([
         ('draft_quote', 'Revised Quotation'),
         ('draft', 'Quotation'),
@@ -46,12 +45,11 @@ class SaleOrder(models.Model):
             }
             so_copy = cur_rec.copy(default=vals)
             cur_rec.state = 'draft'
-#             so_copy.is_revision_quote = True
             cur_rec.so_number += 1
 
     @api.multi
-    def _action_confirm(self):
-        sup_rec = super(SaleOrder, self)._action_confirm()
+    def action_confirm(self):
+        sup_rec = super(SaleOrder, self).action_confirm()
         child_id = self.search([('parent_saleorder_id', '=', self.id)], order="create_date desc", limit=1)
         if child_id:
             child_id.name = self.name
