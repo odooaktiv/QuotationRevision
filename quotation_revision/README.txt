@@ -1,9 +1,9 @@
-Open ERP System :- Odoo 10 Community 
+Open ERP System :- Odoo 09 Community 
 
 Installation 
 ============
 Install the Application => Apps -> Quotation Revision(Technical Name:quotation_revision)
-Install the depends module https://www.odoo.com/apps/modules/10.0/quotation_revision/ (Technical Name: quotation_revision)
+Install the depends module https://www.odoo.com/apps/modules/9.0/quotation_revision/ (Technical Name: quotation_revision)
 
 
 Usage

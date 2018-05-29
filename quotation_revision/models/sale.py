@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from openerp import models, fields, api
 
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
-    
+
     @api.multi
     def _order_revised_count(self):
         for sale_rec in self:
@@ -15,7 +15,7 @@ class SaleOrder(models.Model):
     name = fields.Char(string='Order Reference', required=True, copy=False, readonly=True,
                        index=True, default='New')
     parent_saleorder_id = fields.Many2one('sale.order', 'Parent SaleOrder', copy=False)
-    order_revised_count = fields.Integer('# of Orders Revised', compute='_order_revised_count', copy=False) 
+    order_revised_count = fields.Integer('# of Orders Revised', compute='_order_revised_count', copy=False)
     so_number = fields.Integer('SO Number', copy=False, default=1)
     state = fields.Selection([
         ('draft_quote', 'Revised Quotation'),
@@ -27,7 +27,6 @@ class SaleOrder(models.Model):
         ('cancel', 'Cancelled'),
     ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', default='draft')
 
-
     @api.multi
     def so_revision_quote(self):
         for cur_rec in self:
@@ -37,7 +36,7 @@ class SaleOrder(models.Model):
                 cur_rec.origin = cur_rec.name
             else:
                 origin_name = cur_rec.origin
-                
+
             vals = {
                 'name': 'RSO' + str(cur_rec.so_number) + "_" + origin_name,
                 'state': 'revised',
