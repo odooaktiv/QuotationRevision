@@ -11,6 +11,7 @@
 
     'author': "Aktiv software ",
     'website': "http://www.aktivsoftware.com/",
+    'license': 'AGPL-3',
 
     # Categories can be used to filter modules in modules listing
     'category': 'Sales',
