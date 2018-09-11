@@ -1,33 +1,19 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Quotation Revision",
-
-    'summary': """
-        Quotation Revised History""",
-
-    'description': """
-        We can manage Quotation Revised History in sale order.
-    """,
-
-    'author': "Aktiv software ",
-    'website': "http://www.aktivsoftware.com/",
-
-    # Categories can be used to filter modules in modules listing
+    'name': 'Quotation Revision',
+    'summary': 'Quotation Revised History',
+    'website': 'http://www.aktivsoftware.com',
+    'description': 'We can manage Quotation Revised History in sale order.',
+    'license': 'AGPL-3',
+    'author': 'Aktiv Software',
     'category': 'Sales',
-    'version': '0.1',
-
-    # any module necessary for this one to work correctly
+    'version': '10.0.1.0.0',
     'depends': ['sale'],
-
-    # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
         'views/sale_order_views.xml',
     ],
-    # only loaded in demonstration mode
-    'demo': [
-    ],
-
     'images': ['static/description/banner.jpg'],
-    'application': True,
+    'auto_install': False,
+    'installable': True,
+    'application': False
 }
