@@ -4,7 +4,6 @@
     <record id="act_action_sale_order_revised" model="ir.actions.act_window">
         <field name="name">Revised Sale Order Quotation</field>
         <field name="res_model">sale.order</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="sale.view_quotation_tree" />
         <field name="domain">[('parent_saleorder_id', '=', active_id)]</field>
@@ -40,7 +39,11 @@
     <record id="sale.action_quotations" model="ir.actions.act_window">
         <field name="domain">[('state', '!=', 'revised')]</field>
     </record>
-    
+
+    <record id="sale.action_quotations_with_onboarding" model="ir.actions.act_window">
+        <field name="domain">[('state', '!=', 'revised')]</field>
+    </record>
+
     <record id="sale.action_orders" model="ir.actions.act_window">
         <field name="domain">[('state', '!=', 'revised')]</field>
     </record>

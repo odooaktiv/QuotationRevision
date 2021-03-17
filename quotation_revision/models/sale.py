@@ -6,7 +6,6 @@ from odoo import models, fields, api
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    @api.multi
     def _order_revised_count(self):
         for sale_rec in self:
             order_revised_count = self.search(
@@ -20,7 +19,7 @@ class SaleOrder(models.Model):
     order_revised_count = fields.Integer(
         '# of Orders Revised', compute='_order_revised_count', copy=False)
     so_number = fields.Integer('SO Number', copy=False, default=1)
-    state = fields.Selection([
+    state = fields.Selection(selection_add=[
         ('draft_quote', 'Revised Quotation'),
         ('draft', 'Quotation'),
         ('sent', 'Quotation Sent'),
@@ -29,9 +28,8 @@ class SaleOrder(models.Model):
         ('done', 'Done'),
         ('cancel', 'Cancelled'),
     ], string='Status', readonly=True, copy=False, index=True,
-        track_visibility='onchange', default='draft')
+        tracking=True, default='draft')
 
-    @api.multi
     def so_revision_quote(self):
         for cur_rec in self:
             if not cur_rec.origin:
@@ -50,7 +48,6 @@ class SaleOrder(models.Model):
 #             so_copy.is_revision_quote = True
             cur_rec.so_number += 1
 
-    @api.multi
     def _action_confirm(self):
         sup_rec = super(SaleOrder, self)._action_confirm()
         child_id = self.search(
