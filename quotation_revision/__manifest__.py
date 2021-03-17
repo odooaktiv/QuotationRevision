@@ -5,7 +5,7 @@
     'category': 'sales',
     'license': 'AGPL-3',
     'website': 'www.aktivsoftware.com',
-    'version': '12.0.1.0.0',
+    'version': '14.0.1.0.0',
     'summary': '''
                 Quotation Revised History
             ''',
